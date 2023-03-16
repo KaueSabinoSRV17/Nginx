@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+
+  nginx:
+    image: nginx
+    ports:
+      - 8080:8080
+    networks:
+      - mongo_node
+
+  alurabooks:
+    image: aluradocker/alura-books:1.0
+    ports:
+      - 3000:3000
+    networks:
+      - mongo_node
+
+  meu-mongo:
+    image: mongo:4.4.6
+    networks:
+      - mongo_node
+
+networks:
+  mongo_node:
+    driver: bridge
+
