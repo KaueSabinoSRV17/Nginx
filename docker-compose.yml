@@ -10,5 +10,21 @@ services:
     command: ["nginx", "-g", "daemon off;"]
     volumes:
       - .docker:/usr/local/bin
+      - nginx_config:/etc/nginx/
+      - web_files:/web_files
     environment:
       - TZ=America/New_York
+
+volumes:
+  web_files:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./web_files
+      o: bind
+  nginx_config:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./nginx_config
+      o: bind
