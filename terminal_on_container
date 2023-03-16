@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker exec -it nginx-web-1 bash
