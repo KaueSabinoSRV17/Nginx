@@ -5,4 +5,9 @@ services:
     image: nginx
     ports:
       - "8080:80"
-      - "80:80"
+    entrypoint: /usr/local/bin/entrypoint.sh
+    command: ["nginx", "-g", "daemon off;"]
+    volumes:
+      - .docker:/usr/local/bin
+    environment:
+      - TZ=America/New_York
