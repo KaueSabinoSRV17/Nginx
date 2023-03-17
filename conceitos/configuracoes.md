@@ -52,6 +52,10 @@ Dentro de location, define um arquivo padrão a ser fornecido na rota.
 
 Mostra arquivos de configuração padrão e todas as opções da CLI.
 
+### Flag `-t`
+
+Testa suas alterações, para saber se nada vai quebrar ao recarregar.
+
 ### Flag `-s`
 
 Manda um comando ao nginx
