@@ -25,16 +25,6 @@ em diferentes aplicações. No caso, app Frontend deverão saber
 a rota para cada serviço diferente, ou acessar apenas um caminho, que 
 implemeta um Proxy Reverso
 
-## Load Balancer
-
-Outra implementação útil de um Proxy Reverso é o conceito de Load Balancer
-
-Um Load Balancer nada mais é do que uma mesma aplicação em mais de um servidor,
-com o servidor que faz o Proxy Reverso balanceando o tráfego entre estes diferentes
-servidores igualmente. 
-
-Isso é muito útil para garantir que a aplicação não fique sobre carregada!
-
 ## Diretivas
 
 ### Proxy Pass
