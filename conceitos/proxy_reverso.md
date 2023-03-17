@@ -24,3 +24,40 @@ A idéia é separar regras de negócios que não precisam estar juntas
 em diferentes aplicações. No caso, app Frontend deverão saber 
 a rota para cada serviço diferente, ou acessar apenas um caminho, que 
 implemeta um Proxy Reverso
+
+## Load Balancer
+
+Outra implementação útil de um Proxy Reverso é o conceito de Load Balancer
+
+Um Load Balancer nada mais é do que uma mesma aplicação em mais de um servidor,
+com o servidor que faz o Proxy Reverso balanceando o tráfego entre estes diferentes
+servidores igualmente. 
+
+Isso é muito útil para garantir que a aplicação não fique sobre carregada!
+
+## Diretivas
+
+### Proxy Pass
+
+Esta diretiva deve ir dentro de uma `location`, e descreve um 
+redirecionamento a outro endpoint.
+
+```conf
+location {
+    proxy_pass http://outro-lugar
+}
+```
+
+### Upstream
+
+Esta diretiva é usada para estabelecer um Load Balancer.
+
+Dentro dela, devemos estabelecer todos os caminhos para cada
+servidor diferente (sem http ou https no começo da URL)
+
+```conf
+upstream {
+    server caminho-para-um-microserviço1
+    server caminho-para-um-microserviço2
+}
+```
