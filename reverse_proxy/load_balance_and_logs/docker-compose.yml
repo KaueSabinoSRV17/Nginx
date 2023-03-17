@@ -27,13 +27,6 @@ services:
     image: mongo:4.4.6
     networks:
       - mongo_node
-  
-  phones: 
-    image: dockerkaue17/phones:1.1.0
-    ports:
-      - 8000:8080
-    networks:
-      - mongo_node
 
 networks:
   mongo_node:
