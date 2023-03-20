@@ -28,3 +28,25 @@ Para emitir um certificado de teste, vamos usar o comando `openssl`
 Para que seja um certificado auto-assinado, é importante usar o sub-comando `req -x509`.
 
     openssl req -x509 -days <validade do certificado em dias> -newkey <tipo de codificação:número de bits> -keyout <caminho para a chave> -out <caminho para o certificado>
+
+#### Adicionando o Certificado como confiado pela máquina do Nginx
+
+Para começar a usar a chave e o certificado, devemos usar o seguinte comando no Linux (Instalar `certutil` se ainda não houver):
+
+    certutils -A -d <caminho para sua base de dados de certificados> -t <apelido ao certificado> -n <nome comum do certificado> -i <caminho até o certificado. a chave deve estar na mesma pasta>
+
+Para descobrir qual a sua base de dados, rode o seguinte comando:
+
+    find / -name "cert8.db" -o -name "cert9.db" -o -name "cert*.db"
+
+### Diretivas
+
+Para que o Nginx passe a ouvir conexões HTTPS, troque o `listen` do `server` por `443 ssl` e adicione o destino para o certificado e a chave:
+
+```conf
+server {
+    listen 443 ssl;
+    ssl_certificate <caminho para o certificado>;
+    ssl_certificate_key <caminho para a chave>;
+}
+```
